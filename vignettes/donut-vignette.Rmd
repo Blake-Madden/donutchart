@@ -1,0 +1,33 @@
+---
+title: "Donut Chart"
+author: "Blake Eryx"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Donut Chart}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+source("../R/donut.R")
+library(tidyverse)
+library(ggplot2)
+library(scales)
+library(lazyeval)
+library(rlang)
+library(ggrepel)
+```
+
+Function to create a (ggplot-based) donut chart. Donut charts are similar to pie charts, but with a center hole cut in them. An optional label can be displayed in this area, providing more information about the graph.
+
+## Examples
+
+```{r warning = FALSE}
+as_tibble(Titanic) %>% count(Class, wt=n) %>% rename(PassengersCount=nn) %>%
+       donut_chart(Class, PassengersCount, "Class")
+```

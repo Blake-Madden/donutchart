@@ -1,0 +1,16 @@
+Package: donutchart
+Type: Package
+Title: Donut Charts
+Version: 0.1.0
+Author: Blake Eryx
+Maintainer: Blake Eryx <seasweptdreams@gmail.com>
+Description: Donut chart, a pie chart with a hole (an optional label) in the center.
+Depends: ggplot2, rlang, ggrepel, lazyeval, scales, magrittr
+License: BSD
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
