@@ -6,11 +6,11 @@
 #' @param centerLabel The label displayed in the center of the donut.
 #' @param centerColor The color of the donut's center.
 #' @param centerLabelColor The font color of the donut's center label.
-#' @param centerLabelSize The font size of the donut's center label.
+#' @param centerLabelSize The font (point) size of the donut's center label.
 #' @param startColor The starting color of the range of colors used for the slices.
 #' @param endColor The ending color of the range of colors used for the slices.
 #' @param outerLabelColor The font color of the outer labels.
-#' @param outerLabelSize The font size of the outer labels.
+#' @param outerLabelSize The font (point) size of the outer labels.
 #' @param includePercentage Whether to include percentages next to the slices.
 #' @param nudgeouterLabels How far to nudge the outer labels away from the slices.
 #' @return A donut chart (a ggplot object).
@@ -18,9 +18,9 @@
 #' as_tibble(Titanic) %>% count(Class, wt=n) %>% rename(PassengersCount=nn) %>%
 #'   donut_chart(Class, PassengersCount, "Class")
 donut_chart <- function(data, groupColumn, totalsColumn, centerLabel = "",
-                       centerColor="#767676", centerLabelColor="white", centerLabelSize=4,
+                       centerColor="#767676", centerLabelColor="white", centerLabelSize=24,
                        startColor="#00c896", endColor="#678fdc",
-                       outerLabelColor="black", outerLabelSize=2.5,
+                       outerLabelColor="black", outerLabelSize=10,
                        includePercentage=T, nudgeouterLabels=0)
     {
     overallTotal = sum(eval(substitute(totalsColumn), data))
@@ -46,7 +46,7 @@ donut_chart <- function(data, groupColumn, totalsColumn, centerLabel = "",
         #inner label
         geom_bar(data=innerAreaData, aes(x=1, y=totals), fill=centerColor, stat="identity", width=1) +
         geom_text(data=innerAreaData, aes(x=.5, y=overallTotal/2, label=centerLabel),
-                  color=centerLabelColor, size=centerLabelSize) +
+                  color=centerLabelColor, size=centerLabelSize/ggplot2:::.pt) +
 
         #outer slices
         geom_bar(data=graphData,
@@ -59,7 +59,7 @@ donut_chart <- function(data, groupColumn, totalsColumn, centerLabel = "",
                             x=2.75, y=pos),
                         nudge_x=nudgeouterLabels,
                         segment.alpha=0,
-                        size=outerLabelSize, color=outerLabelColor,
+                        size=outerLabelSize/ggplot2:::.pt, color=outerLabelColor,
                         point.padding = NA, direction = "y") +
 
         scale_fill_continuous(low=startColor, high=endColor, guide=F) +

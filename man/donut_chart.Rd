@@ -6,8 +6,8 @@
 \usage{
 donut_chart(data, groupColumn, totalsColumn, centerLabel = "",
   centerColor = "#767676", centerLabelColor = "white",
-  centerLabelSize = 4, startColor = "#00c896", endColor = "#678fdc",
-  outerLabelColor = "black", outerLabelSize = 2.5,
+  centerLabelSize = 24, startColor = "#00c896", endColor = "#678fdc",
+  outerLabelColor = "black", outerLabelSize = 10,
   includePercentage = T, nudgeouterLabels = 0)
 }
 \arguments{
@@ -23,7 +23,7 @@ donut_chart(data, groupColumn, totalsColumn, centerLabel = "",
 
 \item{centerLabelColor}{The font color of the donut's center label.}
 
-\item{centerLabelSize}{The font size of the donut's center label.}
+\item{centerLabelSize}{The font (point) size of the donut's center label.}
 
 \item{startColor}{The starting color of the range of colors used for the slices.}
 
@@ -31,7 +31,7 @@ donut_chart(data, groupColumn, totalsColumn, centerLabel = "",
 
 \item{outerLabelColor}{The font color of the outer labels.}
 
-\item{outerLabelSize}{The font size of the outer labels.}
+\item{outerLabelSize}{The font (point) size of the outer labels.}
 
 \item{includePercentage}{Whether to include percentages next to the slices.}
 
