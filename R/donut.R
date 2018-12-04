@@ -3,17 +3,17 @@
 #' @param data The data set.
 #' @param groupColumn The column with the categorical labels.
 #' @param totalsColumn The column with the categorical totals.
-#' @param centerLabel The label displayed in the center of the donut.
-#' @param centerColor The color of the donut's center.
-#' @param centerLabelColor The font color of the donut's center label.
-#' @param centerLabelSize The font (point) size of the donut's center label.
+#' @param centerLabel A character vector. The label displayed in the center of the donut.
+#' @param centerColor A character vector. The color of the donut's center.
+#' @param centerLabelColor A character vector. The font color of the donut's center label.
+#' @param centerLabelSize An integer. The font (point) size of the donut's center label.
 #' @param startColor The starting color of the range of colors used for the slices.
-#' @param endColor The ending color of the range of colors used for the slices.
-#' @param outerLabelColor The font color of the outer labels.
-#' @param outerLabelSize The font (point) size of the outer labels.
-#' @param includePercentage Whether to include percentages next to the slices.
-#' @param nudgeouterLabels How far to nudge the outer labels away from the slices.
-#' @return A donut chart (a ggplot object).
+#' @param endColor A character vector. The ending color of the range of colors used for the slices.
+#' @param outerLabelColor A character vector. The font color of the outer labels.
+#' @param outerLabelSize An integer. The font (point) size of the outer labels.
+#' @param includePercentage A logical. Whether to include percentages next to the slices.
+#' @param percentOnSeparateLine A logical. Whether the percent label for each slice should be on a separate line (below the label). includePercentage must be TRUE to take effect.
+#' @param nudgeouterLabels A numeric. How far to nudge the outer labels away from the slices.
 #' @examples
 #' as_tibble(Titanic) %>% count(Class, wt=n) %>% rename(PassengersCount=nn) %>%
 #'   donut_chart(Class, PassengersCount, "Class")
@@ -21,7 +21,8 @@ donut_chart <- function(data, groupColumn, totalsColumn, centerLabel = "",
                        centerColor="#767676", centerLabelColor="white", centerLabelSize=24,
                        startColor="#00c896", endColor="#678fdc",
                        outerLabelColor="black", outerLabelSize=10,
-                       includePercentage=T, nudgeouterLabels=0)
+                       includePercentage=T, percentOnSeparateLine=T,
+                       nudgeouterLabels=0)
     {
     overallTotal = sum(eval(substitute(totalsColumn), data))
 
@@ -37,8 +38,9 @@ donut_chart <- function(data, groupColumn, totalsColumn, centerLabel = "",
 
     sliceLabels <- c()
     if (includePercentage)
-        { sliceLabels <- sprintf("%s\n(%s%%)", graphData$grouping,
-                                          comma(round((graphData$totals/overallTotal)*100))) }
+        { sliceLabels <- sprintf(ifelse(percentOnSeparateLine, "%s\n(%s%%)", "%s (%s%%)"),
+                                graphData$grouping,
+                                comma(round((graphData$totals/overallTotal)*100))) }
     else
         { sliceLabels <- graphData$grouping }
 
