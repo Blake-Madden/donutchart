@@ -8,7 +8,8 @@ donut_chart(data, groupColumn, totalsColumn, centerLabel = "",
   centerColor = "#767676", centerLabelColor = "white",
   centerLabelSize = 24, startColor = "#00c896", endColor = "#678fdc",
   outerLabelColor = "black", outerLabelSize = 10,
-  includePercentage = T, nudgeouterLabels = 0)
+  includePercentage = T, percentOnSeparateLine = T,
+  nudgeouterLabels = 0)
 }
 \arguments{
 \item{data}{The data set.}
@@ -17,28 +18,27 @@ donut_chart(data, groupColumn, totalsColumn, centerLabel = "",
 
 \item{totalsColumn}{The column with the categorical totals.}
 
-\item{centerLabel}{The label displayed in the center of the donut.}
+\item{centerLabel}{A character vector. The label displayed in the center of the donut.}
 
-\item{centerColor}{The color of the donut's center.}
+\item{centerColor}{A character vector. The color of the donut's center.}
 
-\item{centerLabelColor}{The font color of the donut's center label.}
+\item{centerLabelColor}{A character vector. The font color of the donut's center label.}
 
-\item{centerLabelSize}{The font (point) size of the donut's center label.}
+\item{centerLabelSize}{An integer. The font (point) size of the donut's center label.}
 
 \item{startColor}{The starting color of the range of colors used for the slices.}
 
-\item{endColor}{The ending color of the range of colors used for the slices.}
+\item{endColor}{A character vector. The ending color of the range of colors used for the slices.}
 
-\item{outerLabelColor}{The font color of the outer labels.}
+\item{outerLabelColor}{A character vector. The font color of the outer labels.}
 
-\item{outerLabelSize}{The font (point) size of the outer labels.}
+\item{outerLabelSize}{An integer. The font (point) size of the outer labels.}
 
-\item{includePercentage}{Whether to include percentages next to the slices.}
+\item{includePercentage}{A logical. Whether to include percentages next to the slices.}
 
-\item{nudgeouterLabels}{How far to nudge the outer labels away from the slices.}
-}
-\value{
-A donut chart (a ggplot object).
+\item{percentOnSeparateLine}{A logical. Whether the percent label for each slice should be on a separate line (below the label). includePercentage must be TRUE to take effect.}
+
+\item{nudgeouterLabels}{A numeric. How far to nudge the outer labels away from the slices.}
 }
 \description{
 Creates a donut chart.
