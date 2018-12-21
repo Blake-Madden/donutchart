@@ -8,8 +8,7 @@ donut_chart(data, groupColumn, totalsColumn, centerLabel = "",
   centerColor = "#767676", centerLabelColor = "white",
   centerLabelSize = 24, startColor = "#00c896", endColor = "#678fdc",
   outerLabelColor = "black", outerLabelSize = 10,
-  includePercentage = T, percentOnSeparateLine = T,
-  nudgeouterLabels = 0)
+  includePercentage = T, percentOnSeparateLine = T, ...)
 }
 \arguments{
 \item{data}{The data set.}
@@ -38,7 +37,7 @@ donut_chart(data, groupColumn, totalsColumn, centerLabel = "",
 
 \item{percentOnSeparateLine}{A logical. Whether the percent label for each slice should be on a separate line (below the label). includePercentage must be TRUE to take effect.}
 
-\item{nudgeouterLabels}{A numeric. How far to nudge the outer labels away from the slices.}
+\item{...}{Additional arguments to pass to geom_text_repel (controls the slice labels).}
 }
 \description{
 Creates a donut chart.

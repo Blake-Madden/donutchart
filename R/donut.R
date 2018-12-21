@@ -13,7 +13,7 @@
 #' @param outerLabelSize An integer. The font (point) size of the outer labels.
 #' @param includePercentage A logical. Whether to include percentages next to the slices.
 #' @param percentOnSeparateLine A logical. Whether the percent label for each slice should be on a separate line (below the label). includePercentage must be TRUE to take effect.
-#' @param nudgeouterLabels A numeric. How far to nudge the outer labels away from the slices.
+#' @param ... Additional arguments to pass to geom_text_repel (controls the slice labels).
 #' @examples
 #' as_tibble(Titanic) %>% count(Class, wt=n) %>% rename(PassengersCount=nn) %>%
 #'   donut_chart(Class, PassengersCount, "Class")
@@ -22,7 +22,7 @@ donut_chart <- function(data, groupColumn, totalsColumn, centerLabel = "",
                        startColor="#00c896", endColor="#678fdc",
                        outerLabelColor="black", outerLabelSize=10,
                        includePercentage=T, percentOnSeparateLine=T,
-                       nudgeouterLabels=0)
+                       ...)
     {
     overallTotal = sum(eval(substitute(totalsColumn), data))
 
@@ -59,10 +59,9 @@ donut_chart <- function(data, groupColumn, totalsColumn, centerLabel = "",
         geom_text_repel(data=graphData,
                         aes(label=sliceLabels,
                             x=2.75, y=pos),
-                        nudge_x=nudgeouterLabels,
                         segment.alpha=0,
                         size=outerLabelSize/ggplot2:::.pt, color=outerLabelColor,
-                        point.padding = NA, direction = "y") +
+                        point.padding = NA, direction = "y", ...) +
 
         scale_fill_continuous(low=startColor, high=endColor, guide=F) +
         #turn off the content around the chart
