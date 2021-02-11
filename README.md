@@ -1,5 +1,15 @@
 # donutchart
-Donut chart for R
+Donut chart for R.
+
+A donut chart is similar to a pie chart, but uses the center (i.e., the donut whole) as a label display.
+
+The following are easily customizable:
+
+- The center label
+- The center label's font size
+- The center's color
+- The color spectrum to use for the outer slices
+- Whether percentages should be included on the outer labels
 
 Usage
 --------
