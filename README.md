@@ -12,7 +12,6 @@ The following are easily customizable:
 - Whether percentages should be included on the outer labels
 
 # Usage
---------
 
 ```r
 library(tidyverse)
@@ -37,9 +36,8 @@ as_tibble(Titanic) %>% count(Class, wt=n) %>% rename(PassengersCount=nn) %>%
 ![alt text](DonutExample2.svg "Example 2")
 
 # How to Install
---------
 
-Run the following in a your R console:
+Run the following in your R console:
 
 ```r
 library(devtools)
