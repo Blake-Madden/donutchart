@@ -2,8 +2,8 @@ Package: donutchart
 Type: Package
 Title: Donut Charts
 Version: 0.3.0
-Author: Blake Eryx
-Maintainer: Blake Eryx <seasweptdreams@gmail.com>
+Author: Blake Madden
+Maintainer: Blake Madden
 Description: Donut chart, a pie chart with a hole (an optional label) in the center.
 Imports: ggplot2, rlang, ggrepel, lazyeval, scales, magrittr
 License: BSD

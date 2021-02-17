@@ -1,6 +1,6 @@
 ---
 title: "Donut Chart"
-author: "Blake Eryx"
+author: "Blake Madden"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
