@@ -11,7 +11,7 @@ The following are easily customizable:
 - The color spectrum to use for the outer slices
 - Whether percentages should be included on the outer labels
 
-Usage
+# Usage
 --------
 
 ```r
@@ -35,3 +35,13 @@ as_tibble(Titanic) %>% count(Class, wt=n) %>% rename(PassengersCount=nn) %>%
 ```
 
 ![alt text](DonutExample2.svg "Example 2")
+
+# How to Install
+--------
+
+Run the following in a your R console:
+
+```r
+library(devtools)
+install_github("Blake-Madden/donutchart")
+```
