@@ -6,7 +6,7 @@ Author: Blake Madden
 Maintainer: Blake Madden <seasweptdreams@gmail.com>
 Description: Donut chart, a pie chart with a hole (an optional label) in the center.
 Imports: ggplot2, rlang, ggrepel, lazyeval, scales, magrittr
-License: BSD
+License: BSD 2-clause License + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
