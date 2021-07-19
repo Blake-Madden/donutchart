@@ -29,7 +29,8 @@ library(donutchart)
 
 as_tibble(Titanic) %>% count(Class, wt=n) %>% rename(PassengersCount=n) %>%
   donut_chart(Class, PassengersCount, includePercentage=F,
-              "Class\nby Passenger Type", centerLabelSize=12, centerColor="black",
+              "Class\nby Passenger Type",
+              centerLabelSize=12, centerColor="black",
               startColor="#668391", endColor="#8C4A56")
 ```
 
