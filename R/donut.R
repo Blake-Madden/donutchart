@@ -40,7 +40,7 @@ donut_chart <- function(data, groupColumn, totalsColumn, centerLabel = "",
     if (includePercentage)
         { sliceLabels <- sprintf(ifelse(percentOnSeparateLine, "%s\n(%s%%)", "%s (%s%%)"),
                                 graphData$grouping,
-                                comma(round((graphData$totals/overallTotal)*100))) }
+                                scales::comma(round((graphData$totals/overallTotal)*100))) }
     else
         { sliceLabels <- graphData$grouping }
 
@@ -56,14 +56,14 @@ donut_chart <- function(data, groupColumn, totalsColumn, centerLabel = "",
                  color="white", position="stack", stat="identity") +
 
         #labels for each slice
-        geom_text_repel(data=graphData,
+        ggrepel::geom_text_repel(data=graphData,
                         aes(label=sliceLabels,
                             x=2.75, y=pos),
                         segment.alpha=0,
                         size=outerLabelSize/ggplot2:::.pt, color=outerLabelColor,
                         point.padding = NA, direction = "y", ...) +
 
-        scale_fill_continuous(low=startColor, high=endColor, guide=F) +
+        scale_fill_continuous(low=startColor, high=endColor, guide="none") +
         #turn off the content around the chart
         theme(axis.title.y=element_blank(),
               axis.text.y=element_blank(),
